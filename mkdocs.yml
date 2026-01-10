@@ -66,6 +66,11 @@ plugins:
               - '9. Korelacja i regresja': '4_Metody_probabilistyczne/09_correlation_and_regression.md'
               - '10. Zaawansowane metody': '4_Metody_probabilistyczne/10_advanced_methods.md'
               - '11. Teoria decyzji': '4_Metody_probabilistyczne/11_decision_theory.md'
+            - Animacje:
+              - Metody probabilistyczne:
+                - 'Lista 1': 'anim/4_Metody_probalistyczne/prob_list_1.html'
+                - 'Lista 2': 'anim/4_Metody_probalistyczne/prob_list_2.html'
+                - 'Lista 3': 'anim/4_Metody_probalistyczne/prob_list_3.html'
         - locale: en
           name: English
           default: true
@@ -100,3 +105,8 @@ plugins:
               - '9. Correlation & Regression': '4_Metody_probabilistyczne/09_correlation_and_regression.md'
               - '10. Advanced Methods': '4_Metody_probabilistyczne/10_advanced_methods.md'
               - '11. Decision Theory': '4_Metody_probabilistyczne/11_decision_theory.md'
+            - Animations:
+              - Probabilistic Methods:
+                - 'List 1': 'anim/4_Metody_probalistyczne/prob_list_1.html'
+                - 'List 2': 'anim/4_Metody_probalistyczne/prob_list_2.html'
+                - 'List 3': 'anim/4_Metody_probalistyczne/prob_list_3.html'
