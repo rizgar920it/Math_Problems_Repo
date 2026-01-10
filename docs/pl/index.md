@@ -1,24 +1,62 @@
-# Witaj w repozytorium z zadaniami / Welcome to the task repository
+# Interaktywny Zeszyt Ćwiczeń
 
-### 🇵🇱 Wstęp
-Poniżej znajdziesz instrukcję, jak rozpocząć pracę z tym materiałem.
+Witaj w repozytorium **Math Problems**. Projekt ten służy jako szablon cyfrowego zeszytu, który ma stanowić Twoje główne narzędzie pracy przez cały okres trwania kursu.
 
-### 🇬🇧 Introduction
-> Below you will find instructions on how to start working with this material.
+Repozytorium jest dwujęzyczne i zaprojektowane w sposób umożliwiający budowę własnej bazy wiedzy w oparciu o system kontroli wersji.
 
-| Instrukcja (PL) | Instruction (EN) |
-| :--- | :--- |
-| **1. Konto GitHub**<br>Załóż darmowe konto w serwisie [GitHub](https://github.com). | **1. GitHub Account**<br>Create a free account on [GitHub](https://github.com). |
-| **2. Fork Repozytorium**<br>Wykonaj **Fork** tego repozytorium na swoje konto. Będzie to Twoja prywatna kopia, na której będziesz pracować. | **2. Fork Repository**<br>**Fork** this repository to your account. This will be your private copy where you will work. |
-| **3. Rozwiązywanie zadań**<br>W każdym dziale, obok pliku z zadaniami (np. `02_wyznaczniki.md`), znajduje się dedykowany plik na rozwiązania (np. `02_wyznaczniki_rozwiazania.md`).<br><br>Twoim zadaniem jest **uzupełnianie tych plików** rozwiązaniami problemów omawianych na zajęciach. | **3. Solving Tasks**<br>In each section, next to the problem file (e.g., `02_wyznaczniki.md`), there is a dedicated solution file (e.g., `02_wyznaczniki_rozwiazania.md`).<br><br>Your task is to **fill these files** with solutions to the problems discussed in class. |
-| **4. Zapisywanie zmian (Commit)**<br>Regularnie commituj (zatwierdzaj) zmiany do swojego sforkowanego repozytorium. | **4. Saving Changes (Commit)**<br>Regularly commit your changes to your forked repository. |
-| **5. (Opcjonalnie) Publikacja strony**<br>Jeśli chcesz uzyskać czytelną stronę internetową ze swoimi rozwiązaniami (taką jak ta), możesz użyć komendy `mkdocs gh-deploy`. | **5. (Optional) Site Deployment**<br>If you want to generate a readable website with your solutions (like this one), you can use the `mkdocs gh-deploy` command. |
-| **6. Szczegóły techniczne**<br>Dokładna instrukcja konfiguracji i pracy z repozytorium zostanie przedstawiona podczas zajęć. | **6. Technical Details**<br>Detailed instructions on configuration and workflow will be presented during classes. |
+## Metodyka pracy
+
+Aby poprawnie korzystać z udostępnionych materiałów, należy postępować zgodnie z poniższą procedurą:
+
+1.  **Forkowanie Repozytorium**:
+    * Przejdź do repozytorium źródłowego: **[https://github.com/dchorazkiewicz/Math_Problems_Repo](https://github.com/dchorazkiewicz/Math_Problems_Repo)**
+    * Utwórz własną kopię materiałów, używając przycisku `Fork` w serwisie GitHub.
+2.  **Klonowanie**: Pobierz repozytorium na swój komputer lokalny.
+3.  **Tworzenie Dokumentacji**:
+    * Listy zadań znajdują się w odpowiednich działach w menu.
+    * Do każdego pliku z zadaniami (np. `01_macierze.md`) przypisany jest dedykowany katalog na rozwiązania (np. `solution_01_macierze/`).
+    * Katalogi te są Twoją **przestrzenią roboczą**. Należy w nich tworzyć pliki Markdown zawierające rozwiązania, dowody oraz notatki teoretyczne.
+4.  **Utrwalanie zmian**: Regularnie przesyłaj swoje rozwiązania na serwer (Commit & Push).
+
+## Rola notatek w przygotowaniu do egzaminu
+
+Kluczowe jest zrozumienie różnicy między środowiskiem pracy podczas semestru a weryfikacją wiedzy:
+
+* **Egzamin końcowy**: Ma formę **pisemną, stacjonarną i odbywa się bez dostępu do technologii**. Podczas egzaminu nie będziesz mieć dostępu do komputera, telefonu ani systemów AI.
+* **Cel notatek**: Twoje repozytorium służy do nauki. Musisz przygotować, przeczytać i zrozumieć zawarte w nim rozwiązania teraz, aby być w stanie samodzielnie odtworzyć tok rozumowania na sali egzaminacyjnej.
+
+## Wykorzystanie AI do personalizacji nauki
+
+Zdecydowanie zaleca się wykorzystanie narzędzi Generative AI (ChatGPT, Claude, Gemini) na etapie przygotowywania materiałów. Technologia ta pozwala na stworzenie **spersonalizowanych notatek**:
+
+* **Dostosowanie**: Nie ma jednej notatki idealnej dla wszystkich. Jeśli definicja jest niezrozumiała, poproś AI o dodatkowe wyjaśnienie, rozpisanie kroków czy intuicję geometryczną. Stwórz materiał, z którego Tobie uczy się najlepiej.
+* **Efektywność**: Nie kopiuj treści ze strony HTML. Kopiuj surowy kod Markdown z plików źródłowych do promptu AI, aby zachować poprawne formatowanie matematyczne.
+* **Profesjonalizm**: Celem jest wygenerowanie kompletnej, czytelnej i merytorycznej notatki, która posłuży jako Twój osobisty podręcznik.
+
+## Oczekiwania wobec zajęć i odpowiedzialność studenta
+
+**Wszystkie listy zadań są dostępne od pierwszego dnia semestru.** Umożliwia to wcześniejsze zaplanowanie pracy.
+
+* **Brak wymówek**: W dobie powszechnego dostępu do AI, argumenty typu "nie wiedziałem jak zacząć" lub "nie umiałem rozwiązać" są nieakceptowalne. Wygenerowanie bazowego rozwiązania zajmuje sekundy i można to zrobić w dowolnym miejscu (nawet na telefonie).
+* **Charakter zajęć**: Czas na zajęciach przeznaczony jest na dyskusję nad rozwiązaniami, analizę problemów i wyjaśnianie wątpliwości, a nie na rozwiązywanie zadań od zera. Oczekuje się przyjścia na zajęcia z gotowymi materiałami.
+* **Zaradność**: Budowa i utrzymanie tego repozytorium jest lekcją sumienności oraz organizacji własnego warsztatu pracy.
 
 ---
 
-### Uwaga dotycząca języka / Note on Language
+### Dla pasjonatów technologii: Publikacja WWW (Opcjonalne)
 
-**PL:** Wszystkie materiały w tym repozytorium są przygotowane w języku polskim. Jeśli nie posługujesz się tym językiem, w dzisiejszych czasach to żaden problem. Używając edytorów takich jak **Visual Studio Code**, możesz poprosić darmowego agenta AI (np. Copilot lub wtyczki tłumaczące), aby przetłumaczył treść plików na Twój język. Zajmuje to mniej niż 30 sekund.
+Studenci zainteresowani technologią mogą opublikować swoje notatki w formie strony internetowej przy użyciu GitHub Pages.
 
-> **EN:** > All materials in this repository are prepared in Polish. If you do not speak this language, it is not a problem nowadays. By using editors like **Visual Studio Code**, you can ask a free AI agent (e.g., Copilot or translation extensions) to translate the file content into your language. It takes less than 30 seconds.
+* Służy do tego polecenie `mkdocs gh-deploy`.
+* **Zastrzeżenie**: Jest to element całkowicie dobrowolny, nie wpływa na ocenę końcową i służy wyłącznie samorozwojowi.
+
+---
+
+### Dostępne Działy
+
+* **Algebra**: Macierze, wyznaczniki, układy równań.
+* **Geometria**: Wektory, proste i płaszczyzny.
+* **Analiza**: Granice, pochodne, badanie funkcji, całki.
+* **Metody Probabilistyczne**: Rachunek prawdopodobieństwa, statystyka, estymacja.
+
+_Wybierz dział z menu po lewej stronie, aby rozpocząć._
