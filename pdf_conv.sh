@@ -4,12 +4,13 @@
 DOCS_DIR="docs"
 LANGUAGES=("pl" "en")
 
+# Sprawdzenie pandoca
 if ! command -v pandoc &> /dev/null; then
     echo "Błąd: Brak pandoca."
     exit 1
 fi
 
-echo "Start konwersji z zachowaniem struktury katalogów..."
+echo "Start konwersji (PDFLaTeX, standardowe fonty)..."
 
 for lang in "${LANGUAGES[@]}"; do
     WORK_DIR="${DOCS_DIR}/${lang}"
@@ -19,40 +20,38 @@ for lang in "${LANGUAGES[@]}"; do
 
     echo "--- Przetwarzanie języka: $lang ---"
 
-    # Szukamy plików .md, pomijając folder 'pdf', żeby nie robić pętli
     find "$WORK_DIR" -type f -name "*.md" -not -path "*/pdf/*" -print0 | while IFS= read -r -d $'' file; do
         
-        # 1. Obliczamy ścieżkę względną pliku względem katalogu językowego
-        # Np. dla "docs/pl/1_Algebra/macierze.md" -> "1_Algebra/macierze.md"
         rel_path="${file#$WORK_DIR/}"
-        
-        # 2. Wyciągamy sam katalog z tej ścieżki
-        # Np. "1_Algebra"
         sub_dir=$(dirname "$rel_path")
-        
-        # 3. Ustalamy docelowy katalog wewnątrz folderu pdf
-        # Np. "docs/pl/pdf/1_Algebra"
         target_dir="${PDF_ROOT}/${sub_dir}"
         
-        # 4. Tworzymy ten podkatalog, jeśli nie istnieje
         mkdir -p "$target_dir"
 
-        # 5. Ustalamy nazwę pliku wyjściowego
         filename=$(basename "$file" .md)
         output_file="${target_dir}/${filename}.pdf"
 
         echo " -> $sub_dir/$filename.pdf"
 
+        # ZMIANY:
+        # 1. --pdf-engine=pdflatex (zamiast xelatex)
+        # 2. -V lang=pl (automatycznie ładuje babel dla polskiego)
+        # 3. header-includes:
+        #    - \usepackage[T1]{fontenc} -> Kluczowe dla polskich znaków w PDF
+        #    - \usepackage{lmodern} -> Standardowy font LaTeX (wygląda jak domyślny, ale jest wektorowy i ma polskie znaki)
+        #    - \usepackage{icomma} -> Inteligentny przecinek w matematyce (np. 3,14 nie robi odstępu jak lista)
+        
         pandoc "$file" \
             -o "$output_file" \
-            --pdf-engine=xelatex \
+            --pdf-engine=pdflatex \
             -V geometry:margin=2cm \
-            # -V mainfont="DejaVu Serif" \
-            # -V monofont="DejaVu Sans Mono" \
+            -V lang=pl \
+            -V documentclass=article \
+            -V header-includes="\usepackage[T1]{fontenc} \usepackage[utf8]{inputenc} \usepackage{lmodern} \usepackage{icomma}" \
             --variable urlcolor=blue \
             --resource-path="$(dirname "$file")"
 
     done
 done
 
-echo "Gotowe. Struktura katalogów została odwzorowana w folderach pdf."
+echo "Gotowe."
