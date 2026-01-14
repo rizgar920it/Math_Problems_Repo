@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# USTAWIENIA (wszystko małymi literami)
+# USTAWIENIA
 SRC_DIR="docs"
 DEST_DIR="kopie"
 
@@ -10,26 +10,66 @@ if [ ! -d "$SRC_DIR" ]; then
     exit 1
 fi
 
-# Tworzenie katalogu docelowego "kopie"
+# Czyścimy stary katalog kopie, żeby nie było śmieci
+if [ -d "$DEST_DIR" ]; then
+    echo "Czyszczenie poprzedniego folderu '$DEST_DIR'..."
+    rm -rf "$DEST_DIR"
+fi
+
 mkdir -p "$DEST_DIR"
-echo "Rozpoczynam spłaszczanie struktury z '$SRC_DIR' do '$DEST_DIR'..."
+echo "Rozpoczynam kopiowanie ze strukturą tematyczną..."
 
 # Szukamy plików .md
 find "$SRC_DIR" -type f -name "*.md" -print0 | while IFS= read -r -d '' filepath; do
     
-    # 1. Ucinamy "docs/" z początku ścieżki
-    # np. docs/en/rozdzial1/plik.md -> en/rozdzial1/plik.md
+    # Przykładowa ścieżka: docs/en/1_Algebra/01_matrices.md
+    # lub: docs/pl/1_Algebra/solution_01_matrices/solutions.md
+
+    # 1. Ucinamy "docs/"
     relative_path="${filepath#$SRC_DIR/}"
     
-    # 2. Zamieniamy wszystkie ukośniki "/" na podkreślniki "_"
-    # np. en/rozdzial1/plik.md -> en_rozdzial1_plik.md
-    flat_name="${relative_path//\//_}"
+    # 2. Wyciągamy język (pl/en) - to pierwszy element ścieżki
+    lang=$(echo "$relative_path" | cut -d'/' -f1)
     
-    # 3. Kopiujemy plik do folderu kopie pod nową nazwą
-    cp "$filepath" "$DEST_DIR/$flat_name"
+    # 3. Wyciągamy Dział (np. 1_Algebra) - to drugi element ścieżki
+    subject=$(echo "$relative_path" | cut -d'/' -f2)
     
-    echo "Skopiowano: $flat_name"
+    # 4. Reszta ścieżki po dziale (np. 01_matrices.md LUB solution_01_matrices/solutions.md)
+    rest_path=$(echo "$relative_path" | cut -d'/' -f3-)
+    
+    # Pobieramy samą nazwę pliku
+    filename=$(basename "$filepath")
+
+    # LOGIKA GRUPOWANIA (Temat)
+    # Sprawdzamy, czy plik jest w podfolderze (czyli czy rest_path zawiera ukośnik)
+    if [[ "$rest_path" == *"/"* ]]; then
+        # PRZYPADEK: ROZWIĄZANIA (są w folderach solution_...)
+        # Pobieramy nazwę folderu nadrzędnego (np. solution_01_matrices)
+        parent_folder=$(dirname "$rest_path")
+        
+        # Usuwamy prefiks "solution_", żeby nazwa tematu pasowała do nazwy listy
+        # np. solution_01_matrices -> 01_matrices
+        topic="${parent_folder#solution_}"
+    else
+        # PRZYPADEK: LISTA (leży bezpośrednio w dziale)
+        # Tematem jest nazwa pliku bez rozszerzenia .md
+        topic="${filename%.md}"
+    fi
+
+    # 5. Budujemy ścieżkę docelową: kopie / Dział / Temat
+    target_dir="$DEST_DIR/$subject/$topic"
+    
+    # 6. Budujemy nową nazwę pliku z prefiksem języka
+    # np. en_01_matrices.md lub pl_solutions.md
+    new_filename="${lang}_${filename}"
+
+    # Tworzymy folder i kopiujemy
+    mkdir -p "$target_dir"
+    cp "$filepath" "$target_dir/$new_filename"
+    
+    # Opcjonalnie: wyświetlanie postępu (można zakomentować przy dużej liczbie plików)
+    # echo "Skopiowano: $subject -> $topic -> $new_filename"
 done
 
 echo "---"
-echo "Gotowe. Wszystkie pliki są w folderze '$DEST_DIR'."
+echo "Gotowe. Pliki posortowane i połączone (PL+EN) w folderze '$DEST_DIR'."
