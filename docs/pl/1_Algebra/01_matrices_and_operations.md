@@ -85,21 +85,21 @@ $$
 
 Sprawdź, że $R(\theta_1)R(\theta_2) = R(\theta_1 + \theta_2)$.
 
-### Zad 8. 
+### Zad 8.
 
 $\star$ Wiedząc, że
 
 $$
 \begin{aligned}
-\sin(x)&=1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-\frac{x^{6}}{6!}+\ldots\\
-\cos(x)&=x-\frac{x^{3}}{3!}+\frac{x^{5}}{5!}-\frac{x^{7}}{7!}+\ldots
+\sin(x) &= x - \frac{x^{3}}{3!} + \frac{x^{5}}{5!} - \frac{x^{7}}{7!} + \ldots \\
+\cos(x) &= 1 - \frac{x^{2}}{2!} + \frac{x^{4}}{4!} - \frac{x^{6}}{6!} + \ldots
 \end{aligned}
 $$
 
 pokaż, że macierz rotacji $R(\theta)$ może być zapisana jako
 
 $$
-R(\theta) = I +  A + \frac{1}{2!} A^{2} + \frac{1}{3!} A^{3} + \ldots 
+R(\theta) = I +  A + \frac{1}{2!} A^{2} + \frac{1}{3!} A^{3} + \ldots
 $$
 
 gdzie
