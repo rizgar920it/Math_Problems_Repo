@@ -1,0 +1,277 @@
+---
+
+EX 1
+
+Question:
+Calculate the determinant of the matrices A, B, C using Sarrus’ rule.
+
+A =
+[ [2, 3, 1],
+[0, -1, 4],
+[5, 2, 0] ]
+
+B =
+[ [1, 2, 2],
+[4, 0, 0],
+[7, 8, 9] ]
+
+C =
+[ [3, 0, 2],
+[2, 0, -2],
+[0, 1, 1] ]
+
+Solution:
+
+det(A):
+= 2*(-1*0 - 4*2) - 3*(0*0 - 4*5) + 1*(0*2 - (-1)*5)
+= 2*(0 - 8) - 3*(0 - 20) + 1*(0 + 5)
+= -16 + 60 + 5
+= 49
+
+det(B):
+= 1*(0*9 - 0*8) - 2*(4*9 - 0*7) + 2*(4*8 - 0*7)
+= 1*0 - 2*(36) + 2*(32)
+= -72 + 64
+= -8
+
+det(C):
+= 3*(0*1 - (-2)*1) - 0*(2*1 - (-2)*0) + 2*(2*1 - 0*0)
+= 3*(0 + 2) + 2*(2)
+= 6 + 4
+= 10
+
+---
+
+EX 2
+
+Question:
+Determine the determinants using Laplace expansion:
+
+A = [ [1] ]
+
+B =
+[ [1, 0, 2],
+[3, 1, 0],
+[4, 5, 6] ]
+
+C =
+[ [1, 2, 3, 4],
+[0, 1, 0, 0],
+[0, 0, 1, 1],
+[0, 0, 0, 2] ]
+
+Solution:
+
+det(A) = 1
+
+det(B) (expand along row 1):
+det(B) = 1*det([ [1,0],[5,6] ]) - 0*(...) + 2*det([ [3,1],[4,5] ])
+= 1*(1*6 - 0*5) + 2*(3*5 - 1*4)
+= 6 + 2*(15 - 4)
+= 6 + 22
+= 28
+
+det(C):
+C is upper triangular (all entries below diagonal are 0), so determinant is product of diagonal:
+det(C) = 1 * 1 * 1 * 2 = 2
+
+---
+
+EX 3
+
+Question:
+Show that if two rows in a matrix are equal, then the determinant is equal to zero.
+Give an example of a 3x3 matrix with two equal rows and calculate its determinant.
+Justify why this happens.
+
+Solution:
+
+Reason:
+If two rows are equal, swapping those two rows does not change the matrix, but a row swap changes the sign of the determinant.
+So det = -det, which implies det = 0.
+
+Example:
+M =
+[ [1, 2, 3],
+[1, 2, 3],
+[4, 5, 6] ]
+
+Because row 1 = row 2, det(M) = 0.
+
+---
+
+EX 4
+
+Question:
+Calculate the determinant of the triangular matrix T with diagonal elements (3, -2, 5, 1).
+
+Solution:
+
+For any triangular matrix, det = product of diagonal entries.
+det(T) = 3 * (-2) * 5 * 1 = -30
+
+---
+
+EX 5
+
+Question:
+For the matrix depending on parameter t:
+
+M(t) =
+[ [t, 1],
+[2, t] ]
+
+Calculate det(M(t)) and find values of t for which the matrix is singular.
+
+Solution:
+
+det(M(t)) = t*t - (1*2) = t^2 - 2
+
+Singular means det = 0:
+t^2 - 2 = 0
+t = sqrt(2) or t = -sqrt(2)
+
+---
+
+EX 6
+
+Question:
+Solve the equation:
+
+det( [ [x, 3],
+[2, x] ] ) = 0
+
+Solution:
+
+det = x*x - (3*2) = x^2 - 6
+
+x^2 - 6 = 0
+x = sqrt(6) or x = -sqrt(6)
+
+---
+
+EX 7
+
+Question (star):
+Solve the equation:
+
+det( [ [x, 3],
+[2, -x] ] ) = 0
+
+Solution:
+
+det = x*(-x) - (3*2) = -x^2 - 6
+
+-x^2 - 6 = 0
+x^2 = -6
+
+No real solutions.
+Complex solutions: x = i*sqrt(6) or x = -i*sqrt(6)
+
+---
+
+EX 8
+
+Question:
+Calculate the determinant of the matrix:
+
+[ [x,   y,   x + y],
+[y, x + y,   x  ],
+[x + y,  x,   y ] ]
+
+Solution:
+
+det = -2 * (x + y) * (x^2 - x*y + y^2)
+
+---
+
+EX 9
+
+Question:
+Show that the equality holds:
+
+det(
+[ [1, 1, 1],
+[x, y, z],
+[x^2, y^2, z^2] ]
+) = (z - x)(z - y)(y - x)
+
+Prove a similar equality for the determinant:
+
+det(
+[ [1, 1, 1, 1],
+[x, y, z, u],
+[x^2, y^2, z^2, u^2],
+[x^3, y^3, z^3, u^3] ]
+)
+
+Solution:
+
+This is a Vandermonde determinant.
+
+For 3 variables:
+det = (y - x)(z - x)(z - y)
+This matches the right side because: (z - x)(z - y)(y - x) is the same product.
+
+For 4 variables (x, y, z, u):
+det = (y - x)(z - x)(u - x)(z - y)(u - y)(u - z)
+
+---
+
+EX 10
+
+Question:
+Calculate the determinant of the matrices:
+
+1.
+
+[ [ a,  a,  a],
+[-a,  a,  a],
+[-a, -a,  a] ]
+
+2.
+
+[ [a, 0, b],
+[0, c, 0],
+[d, 0, a] ]
+
+Solution:
+
+1. det = 4 * a^3
+
+2. det = c * (a^2 - b*d)
+
+---
+
+EX 11
+
+Question:
+Check the validity of the following relationships:
+
+a) det( [ [a + b,  b],
+[c + d,  d] ] ) = det( [ [a, b],
+[c, d] ] )
+
+b) det( [ [a + b*x,  b],
+[c + d*x,  d] ] ) = det( [ [a, b],
+[c, d] ] )
+
+Solution:
+
+a)
+Left side = (a + b)d - b(c + d)
+= ad + bd - bc - bd
+= ad - bc
+Right side = ad - bc
+So it is TRUE.
+
+b)
+Left side = (a + b*x)d - b(c + d*x)
+= ad + bdx - bc - bdx
+= ad - bc
+Right side = ad - bc
+So it is TRUE for all x.
+
+---
+
+
