@@ -1,44 +1,99 @@
 ## Matrices and Basic Operations
 
-### Ex 1.
+---
+
+### Ex 1. Matrices A and B
+
+**Question**
 
 For the matrices
 
 $$
-A=\begin{pmatrix}1 & 2\\ 3 & 4\end{pmatrix} \quad \text{and} \quad B=\begin{pmatrix}0 & -1\\ 2 & 1\end{pmatrix}
+A=\begin{pmatrix}1 & 2\\ 3 & 4\end{pmatrix},
+\quad
+B=\begin{pmatrix}0 & -1\\ 2 & 1\end{pmatrix}
 $$
 
-calculate
+calculate:
 
 - $A+B$
 - $A-B$
 - $2A$
 - $3B-2A$
 - $A\cdot B$
-- check if $A\cdot B = B\cdot A$.
+- check whether $A\cdot B = B\cdot A$
 
-### Ex 2.
+**Solution**
+
+$$
+A+B=\begin{pmatrix}1 & 1\\ 5 & 5\end{pmatrix}
+$$
+
+$$
+A-B=\begin{pmatrix}1 & 3\\ 1 & 3\end{pmatrix}
+$$
+
+$$
+2A=\begin{pmatrix}2 & 4\\ 6 & 8\end{pmatrix}
+$$
+
+$$
+3B-2A=\begin{pmatrix}-2 & -7\\ 0 & -5\end{pmatrix}
+$$
+
+$$
+A\cdot B=\begin{pmatrix}4 & 1\\ 8 & 1\end{pmatrix},
+\quad
+B\cdot A=\begin{pmatrix}-3 & -4\\ 5 & 8\end{pmatrix}
+$$
+
+Since $A\cdot B \neq B\cdot A$, matrix multiplication is **not commutative**.
+
+---
+
+### Ex 2. Product of Diagonal Matrices
+
+**Question**
 
 For the matrices
 
 $$
-A=\begin{pmatrix}1 & 0\\ 0 & 2\end{pmatrix}, 
+A=\begin{pmatrix}1 & 0\\ 0 & 2\end{pmatrix},
 \quad
-B =\begin{pmatrix}2 & 0\\ 0 & 4\end{pmatrix}, 
+B=\begin{pmatrix}2 & 0\\ 0 & 4\end{pmatrix},
 \quad
 C=\begin{pmatrix}4 & 0\\ 0 & 8\end{pmatrix},
 \quad
 D=\begin{pmatrix}8 & 0\\ 0 & 16\end{pmatrix}
 $$
 
-   check if
+check whether
 
 $$
-A\cdot B\cdot C\cdot D = B\cdot A\cdot D\cdot C = D\cdot C\cdot B\cdot A.
+A\cdot B\cdot C\cdot D
+=
+B\cdot A\cdot D\cdot C
+=
+D\cdot C\cdot B\cdot A.
 $$
 
+**Solution**
 
-### Ex 3.
+All matrices are diagonal, therefore they commute.
+
+$$
+A\cdot B\cdot C\cdot D
+=
+\operatorname{diag}(64,1024)
+$$
+
+Reordering the factors does not change the product, so all equalities hold.
+
+---
+
+### Ex 3. Row Operations
+
+**Question**
 
 Given the matrix
 
@@ -47,79 +102,219 @@ C=\begin{pmatrix}
 1 & 0 & 2\\
 -1 & 3 & 1\\
 0 & 2 & -1
-\end{pmatrix}.
+\end{pmatrix},
 $$
 
-Determine the matrix obtained after rearranging rows: swap the 1st and 3rd rows, then add twice the new 1st row to the 2nd row. Write down all steps for each operation.
+swap the 1st and 3rd rows, then add twice the new 1st row to the 2nd row.
 
-### Ex 4.
+**Solution**
 
-For column vectors $u=(1,-2,3)^{\top}$ and $v=(2,0,-1)^{\top}$, write them as matrices and calculate $u+v$, $u-v$, and the matrix products $u\,v^{\top}$ and $v\,u^{\top}$. What is the rank of matrix $u\,v^{\top}$?
-
-### Ex 5.
-
-Show that the diagonal matrix $D=\operatorname{diag}(2,-3,5)$ commutes with any diagonal matrix $E=\operatorname{diag}(a,b,c)$. Additionally, calculate $D^{3}$ and, if it exists, $D^{-1}$.
-
-### Ex 6.
-
-$\star$ For the matrix
- 
-$$
-P=\begin{pmatrix}1 & 1 & 0\\ 0 & 1 & 1\\ 1 & 0 & 1\end{pmatrix}
-$$
-
-calculate $P^{2}$ and $P^{3}$. Does the sequence $P^{n}$ have a noticeable pattern for $n=1,2,3$?
-
-### Ex 7. 
-
-$\star$ Rotation coding example
-
-Calculate the product of rotation matrices with angle $\theta$ in 2D space:
+After swapping rows 1 and 3:
 
 $$
-R(\theta) = \begin{pmatrix}
-\cos\theta & -\sin\theta\\
-\sin\theta & \cos\theta
+\begin{pmatrix}
+0 & 2 & -1\\
+-1 & 3 & 1\\
+1 & 0 & 2
 \end{pmatrix}
 $$
 
-Check that $R(\theta_1)R(\theta_2) = R(\theta_1 + \theta_2)$.
-
-### Ex 8.
-
-$\star$ Knowing that
+After applying $R_2 \leftarrow R_2 + 2R_1$:
 
 $$
-\begin{aligned}
-\sin(x) &= x - \frac{x^{3}}{3!} + \frac{x^{5}}{5!} - \frac{x^{7}}{7!} + \ldots \\
-\cos(x) &= 1 - \frac{x^{2}}{2!} + \frac{x^{4}}{4!} - \frac{x^{6}}{6!} + \ldots
-\end{aligned}
+\begin{pmatrix}
+0 & 2 & -1\\
+-1 & 7 & -1\\
+1 & 0 & 2
+\end{pmatrix}
 $$
 
-show that the rotation matrix $R(\theta)$ can be written as
+---
+
+### Ex 4. Vector Operations
+
+**Question**
+
+For column vectors
 
 $$
-R(\theta) = I +  A + \frac{1}{2!} A^{2} + \frac{1}{3!} A^{3} + \ldots
+u=(1,-2,3)^{\top},
+\quad
+v=(2,0,-1)^{\top},
+$$
+
+calculate $u+v$, $u-v$, $u v^{\top}$, and $v u^{\top}$.  
+Determine the rank of $u v^{\top}$.
+
+**Solution**
+
+$$
+u+v=(3,-2,2)^{\top},
+\quad
+u-v=(-1,-2,4)^{\top}
+$$
+
+$$
+u v^{\top}=
+\begin{pmatrix}
+2 & 0 & -1\\
+-4 & 0 & 2\\
+6 & 0 & -3
+\end{pmatrix}
+$$
+
+$$
+v u^{\top}=
+\begin{pmatrix}
+2 & -4 & 6\\
+0 & 0 & 0\\
+-1 & 2 & -3
+\end{pmatrix}
+$$
+
+The rank of $u v^{\top}$ is **1**.
+
+---
+
+### Ex 5. Diagonal Matrices
+
+**Question**
+
+Let
+
+$$
+D=\operatorname{diag}(2,-3,5),
+\quad
+E=\operatorname{diag}(a,b,c).
+$$
+
+Show that $D$ commutes with $E$.  
+Compute $D^{3}$ and $D^{-1}$.
+
+**Solution**
+
+Diagonal matrices commute:
+
+$$
+DE = ED = \operatorname{diag}(2a,-3b,5c)
+$$
+
+$$
+D^{3}=\operatorname{diag}(8,-27,125)
+$$
+
+$$
+D^{-1}=\operatorname{diag}\left(\tfrac12,-\tfrac13,\tfrac15\right)
+$$
+
+---
+
+### Ex 6. Powers of a Matrix ⭐
+
+**Question**
+
+For
+
+$$
+P=\begin{pmatrix}1 & 1 & 0\\ 0 & 1 & 1\\ 1 & 0 & 1\end{pmatrix},
+$$
+
+compute $P^{2}$ and $P^{3}$ and describe the pattern.
+
+**Solution**
+
+$$
+P^{2}=
+\begin{pmatrix}
+1 & 2 & 1\\
+1 & 1 & 2\\
+2 & 1 & 1
+\end{pmatrix}
+$$
+
+$$
+P^{3}=
+\begin{pmatrix}
+2 & 3 & 3\\
+3 & 2 & 3\\
+3 & 3 & 2
+\end{pmatrix}
+$$
+
+The powers show increasing symmetry and repeated row structures.
+
+---
+
+### Ex 7. Rotation Matrices ⭐
+
+**Question**
+
+For the rotation matrix
+
+$$
+R(\theta)=
+\begin{pmatrix}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix},
+$$
+
+show that
+
+$$
+R(\theta_1)R(\theta_2)=R(\theta_1+\theta_2).
+$$
+
+**Solution**
+
+Using matrix multiplication and trigonometric identities confirms the equality.
+
+---
+
+### Ex 8. Matrix Exponential Representation ⭐
+
+**Question**
+
+Using the Taylor series of $\sin x$ and $\cos x$, show that
+
+$$
+R(\theta)=I + A + \frac{1}{2!}A^{2} + \frac{1}{3!}A^{3} + \cdots
 $$
 
 where
 
 $$
-A = \begin{pmatrix}0 & -\theta\\ \theta & 0\end{pmatrix}
+A=\begin{pmatrix}0 & -\theta\\ \theta & 0\end{pmatrix}.
 $$
 
-### Ex 9. 
+**Solution**
 
-$\star\star$ Pauli matrices are defined as:
+Odd powers of $A$ generate sine terms and even powers generate cosine terms, reproducing the rotation matrix.
+
+---
+
+### Ex 9. Pauli Matrices ⭐⭐
+
+**Question**
+
+Given the Pauli matrices $\sigma_x$, $\sigma_y$, and $\sigma_z$, verify their square, product, and anticommutation relations.
+
+**Solution**
 
 $$
-\sigma_x = \begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix}, \quad
-\sigma_y = \begin{pmatrix}0 & -i\\ i & 0\end{pmatrix}, \quad
-\sigma_z = \begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}
+\sigma_x^2=\sigma_y^2=\sigma_z^2=I
 $$
 
-where $i$ is the imaginary unit. Check that:
+$$
+\sigma_x\sigma_y=i\sigma_z,
+\quad
+\sigma_y\sigma_z=i\sigma_x,
+\quad
+\sigma_z\sigma_x=i\sigma_y
+$$
 
-- $\sigma_x^2 = \sigma_y^2 = \sigma_z^2 = I$ (identity matrix)
-- $\sigma_x\sigma_y = i\sigma_z$, $\sigma_y\sigma_z = i\sigma_x$, $\sigma_z\sigma_x = i\sigma_y$
-- $\{\sigma_i, \sigma_j\} = 2\delta_{ij}I$ (anticommutator)
+$$
+\{\sigma_i,\sigma_j\}=2\delta_{ij}I
+$$
+
+---
